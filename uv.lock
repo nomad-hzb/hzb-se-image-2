@@ -3061,6 +3061,7 @@ jupyter = [
     { name = "ipydatagrid" },
     { name = "ipysheet" },
     { name = "jupyter-flex" },
+    { name = "plotly" },
     { name = "pyvis" },
     { name = "voila" },
 ]
@@ -3089,6 +3090,7 @@ requires-dist = [
     { name = "nomad-material-processing", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-material-processing.git?rev=103-add-specialized-combinatorialsample-schema" },
     { name = "nomad-pvcomb", marker = "extra == 'plugins'", git = "https://codebase.helmholtz.cloud/pvcomb/nomad-pvcomb.git?rev=develop" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git" },
+    { name = "plotly", marker = "extra == 'jupyter'", specifier = "<6.0" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
     { name = "voila", marker = "extra == 'jupyter'" },
 ]
