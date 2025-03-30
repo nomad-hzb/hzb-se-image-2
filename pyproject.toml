@@ -39,7 +39,8 @@ jupyter = [
 'ipydatagrid',
 'jupyter-flex',
 #'baybe',
-'pyvis'
+'pyvis',
+'lmfit'
 ]
 dev = ["nomad-lab[parsing, infrastructure, dev]==1.3.15"]
 
