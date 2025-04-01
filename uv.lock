@@ -2110,6 +2110,20 @@ wheels = [
 ]
 
 [[package]]
+name = "jupyterlab-h5web"
+version = "12.4.0"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "h5grove" },
+    { name = "h5py" },
+    { name = "jupyter-server" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b5/14/26a749a8fc6cb6cb59795ab3ac247ad94452648b14cd7aaaca0f4cab11a5/jupyterlab_h5web-12.4.0.tar.gz", hash = "sha256:d295f5badff7917589ef654382646bf92e03f2e47574f64636606e4a9cc06f30", size = 494324 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f1/29/dcebc7b7cdea9fa1ce1ec206f8b0149c97cabb8a18acb67a11348b441b96/jupyterlab_h5web-12.4.0-py3-none-any.whl", hash = "sha256:dd1e8dd32caaf10398f2b2e73ca050642a116da64f8e68fa3381d600618a4088", size = 810632 },
+]
+
+[[package]]
 name = "jupyterlab-pygments"
 version = "0.3.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -3213,6 +3227,7 @@ jupyter = [
     { name = "ipydatagrid" },
     { name = "ipysheet" },
     { name = "jupyter-flex" },
+    { name = "jupyterlab-h5web" },
     { name = "lmfit" },
     { name = "pyvis" },
     { name = "voila" },
@@ -3234,6 +3249,7 @@ requires-dist = [
     { name = "ipydatagrid", marker = "extra == 'jupyter'" },
     { name = "ipysheet", marker = "extra == 'jupyter'" },
     { name = "jupyter-flex", marker = "extra == 'jupyter'" },
+    { name = "jupyterlab-h5web", marker = "extra == 'jupyter'" },
     { name = "lmfit", marker = "extra == 'jupyter'" },
     { name = "nomad-baseclasses", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-baseclasses.git" },
     { name = "nomad-chemical-energy", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-chemical-energy.git" },
