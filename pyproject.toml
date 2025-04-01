@@ -41,7 +41,8 @@ jupyter = [
 #'baybe',
 'pyvis',
 'lmfit',
-'jupyterlab_h5web==8.0.0'
+'jupyterlab_h5web',
+'jupyterlab>4.0'
 ]
 dev = ["nomad-lab[parsing, infrastructure, dev]==1.3.15"]
 
