@@ -38,6 +38,7 @@ jupyter = [
 'ipysheet',
 'ipydatagrid',
 'jupyter-flex',
+'ipympl',
 #'baybe',
 'pyvis',
 'lmfit',
