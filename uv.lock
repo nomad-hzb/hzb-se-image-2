@@ -3213,7 +3213,7 @@ requires-dist = [
     { name = "nomad-pvcomb", marker = "extra == 'plugins'", git = "https://codebase.helmholtz.cloud/pvcomb/nomad-pvcomb.git?rev=develop" },
     { name = "oauthenticator", marker = "extra == 'jupyter'", specifier = "<16.0" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git" },
-    { name = "plotly", specifier = "<6.0" },
+    { name = "plotly", specifier = "<7.0" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
     { name = "voila", marker = "extra == 'jupyter'" },
 ]
