@@ -21,7 +21,7 @@ services:
   # the search engine
   elastic:
     restart: unless-stopped
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.28
     container_name: nomad_oasis_elastic
     environment:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
@@ -69,6 +69,7 @@ services:
   worker:
     restart: unless-stopped
     image: ghcr.io/nomad-hzb/hzb-se-image-2:main
+    platform: linux/amd64
     container_name: nomad_oasis_worker
     environment:
       NOMAD_SERVICE: nomad_oasis_worker
@@ -86,12 +87,13 @@ services:
     volumes:
       # - ./configs/nomad.yaml:/app/nomad.yaml
       - ./.volumes/fs:/app/.volumes/fs
-    command: python -m celery -A nomad.processing worker -l info -Q celery
+    command: python -m celery -A nomad.processing worker -l info -Q celery --max-tasks-per-child 128
 
   # nomad app (api + proxy)
   app:
     restart: unless-stopped
     image: ghcr.io/nomad-hzb/hzb-se-image-2:main
+    platform: linux/amd64
     container_name: nomad_oasis_app
     environment:
       NOMAD_SERVICE: nomad_oasis_app
@@ -131,6 +133,7 @@ services:
   north:
     restart: unless-stopped
     image: ghcr.io/nomad-hzb/hzb-se-image-2:main
+    platform: linux/amd64
     container_name: nomad_oasis_north
     environment:
       NOMAD_SERVICE: nomad_oasis_north
@@ -166,6 +169,7 @@ services:
   logtransfer:
     restart: unless-stopped
     image: ghcr.io/nomad-hzb/hzb-se-image-2:main
+    platform: linux/amd64
     container_name: nomad_oasis_logtransfer
     environment:
       NOMAD_SERVICE: nomad_oasis_logtransfer
@@ -185,7 +189,7 @@ services:
   # nomad proxy (a reverse proxy for nomad)
   proxy:
     restart: unless-stopped
-    image: nginx:1.13.9-alpine
+    image: nginx:1.27.4-alpine
     container_name: nomad_oasis_proxy
     command: nginx -g 'daemon off;'
     volumes:
@@ -199,6 +203,17 @@ services:
         condition: service_healthy
     ports:
       - 80:80
+      - 443:443
+
+  # jupyterlab image: (this is only used to pull the image, no service is run for this)
+  jupyterlab_image:
+    image: ghcr.io/fairmat-nfdi/nomad-distro-template/jupyter:main
+    platform: linux/amd64
+    container_name: nomad_jupyter_image
+    pull_policy: always
+    entrypoint: ["true"]
+    deploy:
+      replicas: 0 # Ensures the service isn't started
 
 volumes:
   mongo:

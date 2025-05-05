@@ -13,6 +13,7 @@ north:
       jupyter:
         image: ghcr.io/nomad-hzb/hzb-se-image-2/jupyter:main
 
+
 meta:
   deployment: "oasis"
   deployment_url: "https://my-oasis.org/api"
