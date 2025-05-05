@@ -3088,17 +3088,14 @@ dev = [
     { name = "nomad-lab", extra = ["dev", "infrastructure"] },
 ]
 jupyter = [
-    { name = "dockerspawner" },
     { name = "ipyaggrid" },
     { name = "ipydatagrid" },
     { name = "ipympl" },
     { name = "ipysheet" },
     { name = "jupyter-flex" },
-    { name = "jupyterhub" },
     { name = "jupyterlab" },
     { name = "jupyterlab-h5web" },
     { name = "lmfit" },
-    { name = "oauthenticator" },
     { name = "pyvis" },
     { name = "voila" },
 ]
@@ -3114,14 +3111,12 @@ plugins = [
 
 [package.metadata]
 requires-dist = [
-    { name = "dockerspawner", marker = "extra == 'jupyter'", specifier = "<14" },
     { name = "hzb-combinatorial-libraries", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/hzb-combinatorial-libraries-plugin.git" },
     { name = "ipyaggrid", marker = "extra == 'jupyter'" },
     { name = "ipydatagrid", marker = "extra == 'jupyter'" },
     { name = "ipympl", marker = "extra == 'jupyter'" },
     { name = "ipysheet", marker = "extra == 'jupyter'" },
     { name = "jupyter-flex", marker = "extra == 'jupyter'" },
-    { name = "jupyterhub", marker = "extra == 'jupyter'", specifier = "==4.0.2" },
     { name = "jupyterlab", marker = "extra == 'jupyter'", specifier = ">4.0" },
     { name = "jupyterlab-h5web", marker = "extra == 'jupyter'" },
     { name = "lmfit", marker = "extra == 'jupyter'" },
@@ -3132,7 +3127,6 @@ requires-dist = [
     { name = "nomad-lab", extras = ["parsing", "infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.3.16rc1" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-material-processing.git?rev=103-add-specialized-combinatorialsample-schema" },
     { name = "nomad-pvcomb", marker = "extra == 'plugins'", git = "https://codebase.helmholtz.cloud/pvcomb/nomad-pvcomb.git?rev=develop" },
-    { name = "oauthenticator", marker = "extra == 'jupyter'", specifier = "<16.0" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git" },
     { name = "plotly", specifier = "<6.0" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
