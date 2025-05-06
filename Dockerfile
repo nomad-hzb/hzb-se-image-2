@@ -212,6 +212,9 @@ RUN apt-get update \
       texlive-xetex \
       texlive-fonts-recommended \
       texlive-plain-generic \
+      ffmpeg \
+      libsm6 \
+      libxext6 \
       # clean cache and logs
       && rm -rf /var/lib/apt/lists/* /var/log/* /var/tmp/* ~/.npm
 
