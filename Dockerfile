@@ -76,6 +76,9 @@ RUN apt-get update \
       zip \
       unzip \
       git \
+      ffmpeg \
+      libsm6 \
+      libxext6 \
  && rm -rf /var/lib/apt/lists/*
 
 # Create a non-privileged user that the frenrug will run under.
