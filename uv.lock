@@ -3210,7 +3210,7 @@ requires-dist = [
     { name = "nomad-lab", extras = ["parsing", "infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.3.16rc2" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-material-processing.git?rev=103-add-specialized-combinatorialsample-schema" },
     { name = "nomad-pvcomb", marker = "extra == 'plugins'", git = "https://codebase.helmholtz.cloud/pvcomb/nomad-pvcomb.git?rev=develop" },
-    { name = "oauthenticator", marker = "extra == 'jupyter'", specifier = "<16" },
+    { name = "oauthenticator", marker = "extra == 'jupyter'", specifier = "<18" },
     { name = "perovskite-solar-cell-database", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git" },
     { name = "plotly", specifier = "<6.0" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
@@ -3522,17 +3522,20 @@ wheels = [
 
 [[package]]
 name = "oauthenticator"
-version = "15.1.0"
+version = "17.3.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "jsonschema" },
     { name = "jupyterhub" },
+    { name = "pyjwt" },
     { name = "requests" },
     { name = "ruamel-yaml" },
+    { name = "tornado" },
+    { name = "traitlets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1f/a0/0fc870a69dacb2187d6508bdfc78bc4cf53bbc78527cf3f8ede890354aff/oauthenticator-15.1.0.tar.gz", hash = "sha256:d1d9873c9b66e1af973291968b9573d25378bd8c647f30d73b8d8fb27b1a0b85", size = 49472, upload-time = "2022-09-08T08:55:07.473Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ae/99/883f6e226bd61922e7161032c413adcdbd0b4f397f9e7539b9c78af97872/oauthenticator-17.3.0.tar.gz", hash = "sha256:e5d90cb2411fff3dc6fcc1633468233c0e0e0239422c087c7734d1685055b8f3", size = 65221, upload-time = "2024-12-11T14:05:09.42Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/dc/6b/6d929c788bf5fb66618dc8cf4ac2db453159cd3dbafc1c86d62dc26ae358/oauthenticator-15.1.0-py3-none-any.whl", hash = "sha256:ad1b0da201f2bf2ab0b97a90ec350ddaefc7e9909ddb7e4f22c1d15b42f19b21", size = 66211, upload-time = "2022-09-08T08:55:06.293Z" },
+    { url = "https://files.pythonhosted.org/packages/0c/2f/dc98e8e023dfbebe88e8725470d13565f61f3a5ef6835f330ad6a1d0b1e0/oauthenticator-17.3.0-py3-none-any.whl", hash = "sha256:1aaa7e21996bb6d53d303ac5362cc26a40812c0dbb722e7bffa24edd813390a1", size = 85064, upload-time = "2024-12-11T14:05:06.545Z" },
 ]
 
 [[package]]
