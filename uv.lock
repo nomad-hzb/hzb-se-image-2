@@ -1756,6 +1756,30 @@ wheels = [
 ]
 
 [[package]]
+name = "ipyvue"
+version = "1.11.2"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "ipywidgets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f8/c7/fc11a2b3e9114190504a18d0e661230de2ea165f0a47ab835c69e86a40ef/ipyvue-1.11.2.tar.gz", hash = "sha256:3b1381bd120184f970a5d66deac33b8592a666c8e1ab7a5afd33ecff342e0a95", size = 1741459, upload-time = "2024-11-14T12:45:24.94Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0a/c5/226ff8aaf6248edf16246498d7885805e2c8b122631ac133130b0612b1ad/ipyvue-1.11.2-py2.py3-none-any.whl", hash = "sha256:e009efa97ec223c4833a6c8ef3a473385d767ff69518ff94f107400517333353", size = 2666202, upload-time = "2024-11-14T12:45:22.624Z" },
+]
+
+[[package]]
+name = "ipyvuetify"
+version = "1.11.1"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+dependencies = [
+    { name = "ipyvue" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/24/c8/b2046fa71f3872846934ffae9cfce1ef18379f431c1af20ce022a657feef/ipyvuetify-1.11.1.tar.gz", hash = "sha256:be8003e99ad42f6563c778cc60408484fb5d7dfb17952b94db05aedd2f0da18b", size = 7587552, upload-time = "2025-02-27T16:09:51.531Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/59/a9/9a156fd53c9939f753a6858a0ec3a28c8264f383a2dd7ace5debd39182c4/ipyvuetify-1.11.1-py2.py3-none-any.whl", hash = "sha256:c1d018d994cc670c3c9804b3d75f377da28e3beb54dfcd7d39dcdbe867def69e", size = 7701528, upload-time = "2025-02-27T16:09:48.528Z" },
+]
+
+[[package]]
 name = "ipywidgets"
 version = "8.1.7"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -3173,6 +3197,7 @@ jupyter = [
     { name = "ipydatagrid" },
     { name = "ipympl" },
     { name = "ipysheet" },
+    { name = "ipyvuetify" },
     { name = "jupyter-flex" },
     { name = "jupyterlab" },
     { name = "jupyterlab-h5web" },
@@ -3198,6 +3223,7 @@ requires-dist = [
     { name = "ipydatagrid", marker = "extra == 'jupyter'" },
     { name = "ipympl", marker = "extra == 'jupyter'" },
     { name = "ipysheet", marker = "extra == 'jupyter'" },
+    { name = "ipyvuetify", marker = "extra == 'jupyter'" },
     { name = "jupyter-flex", marker = "extra == 'jupyter'" },
     { name = "jupyterlab", marker = "extra == 'jupyter'", specifier = ">4.0" },
     { name = "jupyterlab-h5web", marker = "extra == 'jupyter'" },
