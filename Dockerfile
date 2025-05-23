@@ -137,15 +137,8 @@ RUN mkdir -p /app/.volumes/fs \
  && chown -R nomad:1000 /app \
  && chown -R nomad:1000 /opt/venv \
  && mkdir nomad \
- && cp /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py nomad/ \
- && echo "c.JupyterHub.tornado_settings = {'websocket_max_message_size': int(200 * 1024 * 1024)}" >> nomad/jupyterhub_config.py \
- && echo "c.NotebookApp.tornado_settings = {'websocket_max_message_size': int(200 * 1024 * 1024)}" >> nomad/jupyterhub_config.py \
- && echo "c.ServerApp.tornado_settings = {'websocket_max_message_size': int(200 * 1024 * 1024)}" >> nomad/jupyterhub_config.py \
- && echo "c.JupyterHub.tornado_settings = {'websocket_max_message_size': int(200 * 1024 * 1024)}" >> /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py \
- && echo "c.NotebookApp.tornado_settings = {'websocket_max_message_size': int(200 * 1024 * 1024)}" >> /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py \
- && echo "c.ServerApp.tornado_settings = {'websocket_max_message_size': int(200 * 1024 * 1024)}" >> /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py
-
-
+ && cp /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py nomad/ 
+ 
 USER nomad
 
 # The application ports
