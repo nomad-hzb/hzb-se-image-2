@@ -65,7 +65,7 @@ jobs:
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          git config http.postBuffer 1g
+          git config receive.advertisePushOptions true
           git add uv.lock
           if [[ `git status --porcelain` ]]; then
             git commit -m "Update lockfile"
