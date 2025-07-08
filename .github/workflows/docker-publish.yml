@@ -149,8 +149,8 @@ jobs:
             PYTHON_VERSION=${{ env.PYTHON_VERSION }}
             NOMAD_DOCS_REPO=${{ env.NOMAD_DOCS_REPO }}
             JUPYTER_VERSION=${{ env.JUPYTER_VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # cache-from: type=gha
+          # cache-to: type=gha,mode=max
           target: ${{ matrix.service == 'jupyter' && 'jupyter' || 'final' }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
