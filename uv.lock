@@ -2333,6 +2333,15 @@ wheels = [
 ]
 
 [[package]]
+name = "jupyterlab-spreadsheet-editor"
+version = "0.7.2"
+source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f5/81/ba3ea6f485b7da3b593a617623e4ce37cdd511e532cd845f232e2bc59269/jupyterlab_spreadsheet_editor-0.7.2.tar.gz", hash = "sha256:ded8ca3d845dae906a7e7b323f8140a71994a8d64095de165ace217e682ad3b3", size = 1857860, upload-time = "2024-07-22T15:02:36.403Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/51/0f/85269ae63f288d7f49f8626b8bcb165c2ccfe1414364440a9784ef5ba045/jupyterlab_spreadsheet_editor-0.7.2-py3-none-any.whl", hash = "sha256:4839db6d9c57ebdbf4ca5307935cdb5058cfae8f84bc5316f2b5aed498c7a3a2", size = 164968, upload-time = "2024-07-22T15:02:31.808Z" },
+]
+
+[[package]]
 name = "jupyterlab-widgets"
 version = "3.0.15"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -3353,6 +3362,7 @@ jupyter = [
     { name = "jupyter-flex" },
     { name = "jupyterlab" },
     { name = "jupyterlab-h5web" },
+    { name = "jupyterlab-spreadsheet-editor" },
     { name = "lmfit" },
     { name = "pyvis" },
     { name = "seaborn" },
@@ -3379,6 +3389,7 @@ requires-dist = [
     { name = "jupyter-flex", marker = "extra == 'jupyter'" },
     { name = "jupyterlab", marker = "extra == 'jupyter'", specifier = ">4.0" },
     { name = "jupyterlab-h5web", marker = "extra == 'jupyter'" },
+    { name = "jupyterlab-spreadsheet-editor", marker = "extra == 'jupyter'" },
     { name = "lmfit", marker = "extra == 'jupyter'" },
     { name = "nomad-baseclasses", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-baseclasses.git" },
     { name = "nomad-chemical-energy", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-chemical-energy.git" },
