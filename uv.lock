@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.10"
 resolution-markers = [
     "python_full_version >= '3.14' and sys_platform == 'win32'",
@@ -3945,8 +3945,8 @@ wheels = [
 
 [[package]]
 name = "perovskite-solar-cell-database"
-version = "1.2.2"
-source = { git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git#6a1c6e19296c8d3f3f1fff9939227d395684146f" }
+version = "1.2.6"
+source = { git = "https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git#11a734759bb288ef30a04b6c9c01333b324bf53f" }
 dependencies = [
     { name = "lxml-html-clean" },
     { name = "nomad-lab" },
