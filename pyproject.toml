@@ -44,6 +44,7 @@ jupyter = [
 'jupyter-flex',
 'ipympl',
 #'baybe',
+'ipython<9.0',
 'pyvis',
 'lmfit',
 'jupyterlab_h5web',
