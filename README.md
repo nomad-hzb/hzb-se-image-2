@@ -6,7 +6,7 @@ Click [here](https://github.com/new?template_name=nomad-distro-template&template
 to use this template, or click the `Use this template` button in the upper right corner of
 the main GitHub page for this template.
 
-> [!IMPORTANT]
+> [!CAUTION]
 > The templated repository will run a GitHub action on creation which might take a few minutes.
 > After the workflow finishes you should refresh the page and this message should disappear.
 > If this message persists you might need to trigger the workflow manually by navigating to the
@@ -74,7 +74,27 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
     sudo chown -R 1000 .volumes
     ```
 
-4. Pull the images specified in the `docker-compose.yaml`
+4. Create a file for environment variables
+  
+    Before running the containers, you should create a `.env` file in the root of the repository. This file is used to store sensitive information and is ignored by git.
+
+    At a minimum, you should add a secure secret for the API:
+
+    ```
+    NOMAD_SERVICES_API_SECRET='***'
+    ```
+
+    Make sure the `NOMAD_SERVICES_API_SECRET` is at least 32 characters long.
+
+    If you have bash available you can run this script:
+    
+    ```sh
+    sh scripts/generate-env.sh
+    ```
+
+    This will create a `.env` file with a randomly generated 64-character API secret. If the file already exists, you'll be prompted before overwriting it.
+
+5. Pull the images specified in the `docker-compose.yaml`
 
     Note that the image needs to be public or you need to provide a PAT (see "Important" note above).
 
@@ -82,7 +102,7 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
     docker compose pull
     ```
 
-5. Configuring Secure HTTP and HTTPS Connections
+6. Configuring Secure HTTP and HTTPS Connections
 
    By default `docker-compose.yaml` uses the HTTP protocol for communication. This works for testing, but before entering production you must secure your setup with HTTPS; otherwise, any communication with the server—including credentials and sensitive data—can be compromised.
 
@@ -119,13 +139,13 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
    + - ./ssl:/etc/nginx/ssl:ro  # Your certificate files
    ```
 
-6. And run it with docker compose in detached (--detach or -d) mode
+7. And run it with docker compose in detached (--detach or -d) mode
 
     ```sh
     docker compose up -d
     ```
 
-7. (Optional) You can now test that NOMAD is running with
+8. (Optional) You can now test that NOMAD is running with
 
     ```sh
     # HTTP
@@ -135,7 +155,7 @@ Below are instructions for how to deploy this NOMAD Oasis distribution
     curl --insecure https://localhost/nomad-oasis/alive
     ```
 
-7. Finally, open [http://localhost/nomad-oasis](http://localhost/nomad-oasis) in your browser to start using your new NOMAD Oasis.
+9. Finally, open [http://localhost/nomad-oasis](http://localhost/nomad-oasis) in your browser to start using your new NOMAD Oasis.
 
 #### Updating the image
 Any pushes to the main branch of this repository, such as when [adding a plugin](#adding-a-plugin), will trigger a pipeline that generates a new app and jupyter image.
@@ -165,7 +185,7 @@ systems docker gid. The user id 1000 is used as the nomad user inside all contai
 Please see the [Jupyter image](#the-jupyter-image) section below for more information on the jupyter NORTH image being generated in this repository.
 
 You can find more details on setting up and maintaining an Oasis in the NOMAD docs here:
-[nomad-lab.eu/prod/v1/docs/oasis/install.html](https://nomad-lab.eu/prod/v1/docs/oasis/install.html)
+[https://nomad-lab.eu/prod/v1/staging/docs/howto/oasis/configure.html](https://nomad-lab.eu/prod/v1/staging/docs/howto/oasis/configure.html)
 
 ### For an existing Oasis
 
@@ -183,6 +203,30 @@ volumes:
 ```
 
 To run the new image you can follow steps 5. and 6. [above](#for-a-new-oasis).
+
+## Configuring Worker Replicas and Resource Limits
+
+The `docker-compose.yaml` file is configured to run four worker replicas by default, with each limited to 4 CPU cores and 8GB of RAM. You can adjust these values to match the capacity of your server.
+
+The relevant configuration is located in the `worker` service definition within the `docker-compose.yaml` file:
+
+```yaml
+services:
+  worker:
+    ...
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: "4.0" # Maximum 4 CPU cores
+          memory: 8G # Maximum 8GB RAM
+```
+
+-   `replicas`: The number of container instances to run for the worker service.
+-   `cpus`: The maximum number of CPU cores the container can use.
+-   `memory`: The maximum amount of memory the container can use.
+
+Adjust these values based on your server's available resources to optimize performance.
 
 ## Adding a plugin
 
@@ -330,3 +374,19 @@ Most likely you have not made the package public or provided a personal access t
 You can read how to make your package public in the GitHub docs [here](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
 or how to configure a PAT (if you want to keep the distribution private) in the GitHub
 docs [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic).
+
+## Enabling NOMAD Actions
+
+To enable NOMAD Actions, you need to decide whether you need a CPU worker, a GPU worker, or both, and then make the following changes:
+
+1.  **Enable the required worker service(s) in `docker-compose.yaml`:**
+
+    Uncomment the `cpu_worker` service, the `gpu_worker` service, or both in the `docker-compose.yaml` file depending on your needs.
+
+2.  **Enable the corresponding build step(s) in the Docker publish workflow:**
+
+    In the `.github/workflows/docker-publish.yml` file, uncomment the build step(s) corresponding to the worker(s) you enabled in the `docker-compose.yaml` file.
+
+3.  **Adjust deployment resources:**
+
+    If necessary, adjust the deployment resources (e.g., CPU, memory, replicas) for the enabled worker service(s) in the `docker-compose.yaml` file to match your server's capacity.

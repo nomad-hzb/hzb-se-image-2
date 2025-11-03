@@ -21,6 +21,19 @@ ENV VIRTUAL_ENV=/opt/venv \
     UV_FROZEN=1 \
     UV_PROJECT_ENVIRONMENT=/opt/venv
 
+# Create a non-privileged user.
+# See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
+ARG UID=1000
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/nonexistent" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    nomad
+
+
 # Final stage to create the runnable image with minimal size
 FROM base AS base_final
 
@@ -44,17 +57,6 @@ RUN apt-get update \
 # https://pythonspeed.com/articles/multi-stage-docker-python/
 ENV PATH="/opt/venv/bin:$PATH"
 
-# Create a non-privileged user that the frenrug will run under.
-# See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-ARG UID=1000
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --shell "/sbin/nologin" \
-    #--home "/nonexistent" \
-    #--no-create-home \
-    --uid "${UID}" \
-    nomad
 
 FROM base AS builder
 
@@ -76,23 +78,7 @@ RUN apt-get update \
       zip \
       unzip \
       git \
-      ffmpeg \
-      libsm6 \
-      libxext6 \
  && rm -rf /var/lib/apt/lists/*
-
-# Create a non-privileged user that the frenrug will run under.
-# See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
-ARG UID=1000
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --shell "/sbin/nologin" \
-    #--home "/nonexistent" \
-    #--no-create-home \
-    --uid "${UID}" \
-    nomad
-
 
 # Install UV
 COPY --from=uv_image /uv /bin/uv
@@ -119,26 +105,46 @@ RUN set -ex && \
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv run --all-extras --directory docs mkdocs build \
+    uv run --with nomad-docs --directory docs mkdocs build \
     && mkdir -p built_docs \
     && cp -r docs/site/* built_docs
+
+FROM builder AS gpu_action_builder
+
+WORKDIR /app
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --extra plugins --extra gpu-action
+
+FROM builder AS cpu_action_builder
+
+WORKDIR /app
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --extra plugins --extra cpu-action
 
 FROM base_final AS final
 
 ARG PYTHON_VERSION=3.12
 
-COPY --chown=nomad:1000 --from=builder /opt/venv /opt/venv
-COPY --chown=nomad:1000 scripts/run.sh .
-COPY --chown=nomad:1000 scripts/run-worker.sh .
+COPY --chown=nomad:${UID} --from=builder /opt/venv /opt/venv
+COPY --chown=nomad:${UID} scripts/run.sh .
+COPY --chown=nomad:${UID} scripts/run-worker.sh .
 COPY configs/nomad.yaml nomad.yaml
-COPY --chown=nomad:1000 --from=docs /app/built_docs /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/app/static/docs
+COPY pyproject.toml uv.lock /opt/
+COPY --chown=nomad:${UID} --from=docs /app/built_docs /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/app/static/docs
 
 RUN mkdir -p /app/.volumes/fs \
- && chown -R nomad:1000 /app \
- && chown -R nomad:1000 /opt/venv \
+ && chown -R nomad:${UID} /app \
+ && chown -R nomad:${UID} /opt/venv \
  && mkdir nomad \
- && cp /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py nomad/ 
- 
+ && cp /opt/venv/lib/python${PYTHON_VERSION}/site-packages/nomad/jupyterhub_config.py nomad/
+
+
 USER nomad
 
 # The application ports
@@ -146,6 +152,14 @@ EXPOSE 8000
 EXPOSE 9000
 
 VOLUME /app/.volumes/fs
+
+FROM final AS cpu_action_final
+
+COPY --chown=nomad:${UID} --from=gpu_action_builder /opt/venv /opt/venv
+
+FROM final AS gpu_action_final
+
+COPY --chown=nomad:${UID} --from=cpu_action_builder /opt/venv /opt/venv
 
 
 FROM quay.io/jupyter/base-notebook:${JUPYTER_VERSION} AS jupyter_builder
@@ -170,9 +184,6 @@ RUN apt-get update \
       zip \
       unzip \
       git \
-      ffmpeg \
-      libsm6 \
-      libxext6 \
       # clean cache and logs
       && rm -rf /var/lib/apt/lists/* /var/log/* /var/tmp/* ~/.npm
 
@@ -211,9 +222,6 @@ RUN apt-get update \
       texlive-xetex \
       texlive-fonts-recommended \
       texlive-plain-generic \
-      ffmpeg \
-      libsm6 \
-      libxext6 \
       # clean cache and logs
       && rm -rf /var/lib/apt/lists/* /var/log/* /var/tmp/* ~/.npm
 
