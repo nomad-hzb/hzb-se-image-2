@@ -43,6 +43,7 @@ jupyter = [
 'ipydatagrid',
 'jupyter-flex',
 'ipympl',
+'electrokitty',
 #'baybe',
 'ipython<9.0',
 'pyvis',
