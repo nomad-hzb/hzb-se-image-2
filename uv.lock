@@ -3423,7 +3423,7 @@ requires-dist = [
 [[package]]
 name = "nomad-hysprint"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#7e227e1c3e18b3d52da17e603b08e37f4b665644" }
+source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#d6073cf756e49fc0781e9e284496f51c1e437764" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
