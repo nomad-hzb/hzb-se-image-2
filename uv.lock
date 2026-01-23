@@ -3350,7 +3350,7 @@ wheels = [
 [[package]]
 name = "nomad-baseclasses"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#422c3c7e8994d64583a328543fcdbad72d08a79e" }
+source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#11870384bd564cd735217dc67e4fe1f9894923d8" }
 dependencies = [
     { name = "chardet" },
     { name = "hdf5plugin" },
@@ -3454,7 +3454,7 @@ requires-dist = [
 [[package]]
 name = "nomad-hysprint"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#8946dc3ac5ed4c90703dbdb197ec19433fdedb98" }
+source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#b40c8dc9f88efcea95d7e9bc4983d15d6867da55" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
@@ -4807,8 +4807,8 @@ wheels = [
 
 [[package]]
 name = "pynxtools-xps"
-version = "0.5.4.post1.dev3+gde6990135"
-source = { git = "https://github.com/FAIRmat-NFDI/pynxtools-xps.git#de699013507498ed77cd301bb9b6c47cbd610522" }
+version = "0.5.4.post1.dev11+g094b09aae"
+source = { git = "https://github.com/FAIRmat-NFDI/pynxtools-xps.git#094b09aae7a15377c0189f104e1bec19d99ade9a" }
 dependencies = [
     { name = "igor2" },
     { name = "jsonschema" },
