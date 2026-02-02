@@ -27,7 +27,6 @@ dependencies = [
 
 [project.optional-dependencies]
 plugins = [
-  "perovskite-solar-cell-database @ git+https://github.com/FAIRmat-NFDI/nomad-perovskite-solar-cells-database.git",
   'nomad-material-processing @ git+https://github.com/FAIRmat-NFDI/nomad-material-processing.git@103-add-specialized-combinatorialsample-schema',
   'nomad-baseclasses @ git+https://github.com/nomad-hzb/nomad-baseclasses.git',
   'nomad-hysprint @ git+https://github.com/nomad-hzb/nomad-hysprint.git',
