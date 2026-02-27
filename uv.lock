@@ -3267,7 +3267,7 @@ wheels = [
 [[package]]
 name = "nomad-baseclasses"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#1ceb182b29cec6c980ca4420ef76967ae739c13c" }
+source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#d0b2b7bd66dd1fa523424679790a1bb2079fd351" }
 dependencies = [
     { name = "chardet" },
     { name = "hdf5plugin" },
@@ -3369,7 +3369,7 @@ requires-dist = [
 [[package]]
 name = "nomad-hysprint"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#a36675a8dc3ceb7365c0d53ca1ea60a390151eaf" }
+source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#c5a3b22cf87ee35ce6b98ae117db5f3a53dfa903" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
