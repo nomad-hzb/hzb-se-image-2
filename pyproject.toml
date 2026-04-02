@@ -20,11 +20,13 @@ version = "0.1"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-dependencies = [
-  "nomad-lab[parsing, infrastructure]==1.4.2rc1"
-  ]
+dependencies = ["nomad-lab[infrastructure]==1.4.2rc1"]
+
+[project.urls]
+repository = "https://github.com/FAIRmat-NFDI/nomad-distro-template"
 
 [project.optional-dependencies]
+# Add your plugins to the list below.
 plugins = [
   'nomad-material-processing @ git+https://github.com/FAIRmat-NFDI/nomad-material-processing.git@103-add-specialized-combinatorialsample-schema',
   'nomad-baseclasses @ git+https://github.com/nomad-hzb/nomad-baseclasses.git',
@@ -32,6 +34,7 @@ plugins = [
   'hzb-combinatorial-libraries @ git+https://github.com/nomad-hzb/hzb-combinatorial-libraries-plugin.git',
   'nomad-chemical-energy @ git+https://github.com/nomad-hzb/nomad-chemical-energy.git',
   "nomad-pvcomb @ git+https://codebase.helmholtz.cloud/pvcomb/nomad-pvcomb.git@develop"
+  "nomad-north-jupyter>=0.2.5"
 ]
 jupyter = [
 'voila',
@@ -51,15 +54,15 @@ jupyter = [
 'seaborn', 
 'jupyterlab-spreadsheet-editor' # 'jupyterhub<5','oauthenticator<16'
 ]
-dev = ["nomad-lab[parsing, infrastructure, dev]==1.4.2rc1"]
 
+dev = ["nomad-lab[infrastructure, dev]==1.4.2rc1"]
 
 [tool.uv]
 extra-index-url = [
   "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple",
 ]
-constraint-dependencies = ["hyperspy>=1.7.6"]
-
+constraint-dependencies = ["hyperspy>=1.7.6", "pyzmq==27.0.2"]
+prerelease = "explicit"
 
 [tool.setuptools.packages.find]
 exclude = ["gui*", "docs*", "config*"]
