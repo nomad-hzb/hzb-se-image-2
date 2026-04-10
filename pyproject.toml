@@ -20,7 +20,7 @@ version = "0.1"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-dependencies = ["nomad-lab[infrastructure]==1.4.2rc1"]
+dependencies = ["nomad-lab[infrastructure]==1.4.2rc2"]
 
 [project.urls]
 repository = "https://github.com/nomad-hzb/hzb-se-image-2"
@@ -55,7 +55,7 @@ jupyter = [
 'jupyterlab-spreadsheet-editor' # 'jupyterhub<5','oauthenticator<16'
 ]
 
-dev = ["nomad-lab[infrastructure, dev]==1.4.2rc1"]
+dev = ["nomad-lab[infrastructure, dev]==1.4.2rc2"]
 
 [tool.uv]
 extra-index-url = [
