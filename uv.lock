@@ -3681,8 +3681,8 @@ requires-dist = [
     { name = "nomad-baseclasses", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-baseclasses.git" },
     { name = "nomad-chemical-energy", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-chemical-energy.git" },
     { name = "nomad-hysprint", marker = "extra == 'plugins'", git = "https://github.com/nomad-hzb/nomad-hysprint.git" },
-    { name = "nomad-lab", extras = ["infrastructure"], specifier = "==1.4.2rc1" },
-    { name = "nomad-lab", extras = ["infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.4.2rc1" },
+    { name = "nomad-lab", extras = ["infrastructure"], specifier = "==1.4.2rc2" },
+    { name = "nomad-lab", extras = ["infrastructure", "dev"], marker = "extra == 'dev'", specifier = "==1.4.2rc2" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-material-processing.git?rev=103-add-specialized-combinatorialsample-schema" },
     { name = "nomad-pvcomb", marker = "extra == 'plugins'", git = "https://codebase.helmholtz.cloud/pvcomb/nomad-pvcomb.git?rev=develop" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
@@ -3706,7 +3706,7 @@ dependencies = [
 
 [[package]]
 name = "nomad-lab"
-version = "1.4.2rc1"
+version = "1.4.2rc2"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "ase" },
@@ -3752,9 +3752,9 @@ dependencies = [
     { name = "xarray", version = "2025.6.1", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "xarray", version = "2025.9.0", source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/18ffebbe8091f1547fff57283ca8df75070b0fd999bc1049d67277f63b9c1005/nomad_lab-1.4.2rc1.tar.gz", hash = "sha256:18ffebbe8091f1547fff57283ca8df75070b0fd999bc1049d67277f63b9c1005" }
+sdist = { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/5c17738c890d2f4f43ff44a11717a8d1e938a8c43693b69f5a3592f6df7169e6/nomad_lab-1.4.2rc2.tar.gz", hash = "sha256:5c17738c890d2f4f43ff44a11717a8d1e938a8c43693b69f5a3592f6df7169e6" }
 wheels = [
-    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/da24b891dd06a16bf9e24e7ef627e376c98f78a6a6ea507dbf7cc69292589834/nomad_lab-1.4.2rc1-py3-none-any.whl", hash = "sha256:da24b891dd06a16bf9e24e7ef627e376c98f78a6a6ea507dbf7cc69292589834" },
+    { url = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/files/ebae6f7ea35b095896125ead608b294690757f1cd3d952e42edf8ce9b0a9dcd7/nomad_lab-1.4.2rc2-py3-none-any.whl", hash = "sha256:ebae6f7ea35b095896125ead608b294690757f1cd3d952e42edf8ce9b0a9dcd7" },
 ]
 
 [package.optional-dependencies]
