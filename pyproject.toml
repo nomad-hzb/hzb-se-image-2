@@ -43,7 +43,7 @@ jupyter = [
 'ipympl',
 'electrokitty',
 #'baybe',
-'ipython<9.0',
+'ipython<10.0',
 'pyvis',
 'lmfit',
 'jupyterlab_h5web',
