@@ -9,16 +9,13 @@ fallback_version = "0.0"
 classifiers = [
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
 ]
 name = "nomad-distribution"
 description = "nomad distribution template"
 version = "0.1"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = { file = "LICENSE" }
 dependencies = ["nomad-lab[infrastructure]==1.4.2"]
 
