@@ -43,7 +43,6 @@ RUN apt-get update \
  && apt-get install --yes --quiet --no-install-recommends \
        libgomp1 \
        libmagic1 \
-       libzmq>=3.2.2 \
        curl \
        zip \
        unzip \
@@ -72,7 +71,6 @@ RUN apt-get update \
  && apt-get install --yes --quiet --no-install-recommends \
       libgomp1 \
       libmagic1 \
-      libzmq>=3.2.2 \
       file \
       gcc \
       build-essential \
@@ -202,7 +200,6 @@ RUN apt-get update \
       libmagic1 \
       file \
       gcc \
-      libzmq>=3.2.2 \
       build-essential \
       curl \
       zip \
@@ -240,7 +237,6 @@ RUN apt-get update \
       libgomp1 \
       libmagic1 \
       file \
-      libzmq>=3.2.2 \
       curl \
       zip \
       unzip \
