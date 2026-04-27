@@ -1376,7 +1376,7 @@ wheels = [
 
 [[package]]
 name = "h5grove"
-version = "3.0.0"
+version = "4.0.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "h5py" },
@@ -1385,9 +1385,9 @@ dependencies = [
     { name = "tifffile" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ae/a0/edbd9a6648bc535223b4da893c6f4a5d111ca4c77ac58f195616f4555462/h5grove-3.0.0.tar.gz", hash = "sha256:c29e4068e8c292357e9b8b595c369921bba496aae1de2db7c04edd2e4bcde43b", size = 14418, upload-time = "2026-02-16T08:26:45.519Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/53/1c/22a2aff6db2f5b3ec5a0d0b98bd130ed88445c72085128032e99a6f288d6/h5grove-4.0.0.tar.gz", hash = "sha256:81bbd726743f31e78ff11f656a2558bbea3ed80ddde5e4e76285a9d15bfb4b9a", size = 14482, upload-time = "2026-04-14T09:03:40.784Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0e/33/35f6e602e054c2a8945bc5c0dcec5a50f763f555a35d4eff43b022ed0b64/h5grove-3.0.0-py3-none-any.whl", hash = "sha256:853c5eb6b981dee3723cb979de12e439a12641532ca00a8a6d2e6fdd79027956", size = 17191, upload-time = "2026-02-16T08:26:43.934Z" },
+    { url = "https://files.pythonhosted.org/packages/47/74/80c3d996a3f8e953973a0828c88e5788be11470d747eb471a165087acb06/h5grove-4.0.0-py3-none-any.whl", hash = "sha256:8bacfc2af4af0b302fd7688e9c1f463e6a80e142d0272f871d37019d6e6a16d5", size = 17256, upload-time = "2026-04-14T09:03:39.618Z" },
 ]
 
 [package.optional-dependencies]
@@ -2133,30 +2133,16 @@ wheels = [
 
 [[package]]
 name = "jupyterlab-h5web"
-version = "0.0.7"
-source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
-dependencies = [
-    { name = "jupyterlab-hdf" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/89/6c/59f4db7cfc1e392e6ab67e04c45df5da2d38633d75d374e5075aeef4d7fc/jupyterlab_h5web-0.0.7.tar.gz", hash = "sha256:b6c8b8fb5c70cfd1f3ff3c347873d139bb023d9c6de25973356a65dd2204d13d", size = 19721, upload-time = "2021-04-19T08:33:17.223Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/bb/c7/9a3cf1e9c90697724779b2caa62897fde2a2b701fdc9448d26916c97701d/jupyterlab_h5web-0.0.7-py3-none-any.whl", hash = "sha256:00b0bb75a179fc25c02c11ba8f1ebbed209bf0dd2d0a8a41f3fbb825f0bf5fe9", size = 20313, upload-time = "2021-04-19T08:33:16.287Z" },
-]
-
-[[package]]
-name = "jupyterlab-hdf"
-version = "1.1.0"
+version = "12.8.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
     { name = "h5grove" },
     { name = "h5py" },
-    { name = "notebook" },
-    { name = "numpy" },
-    { name = "tornado" },
+    { name = "jupyter-server" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d9/b8/348a4e3eb3391e7548ef19dd264b00d84e8672678e92c269736f34951e48/jupyterlab_hdf-1.1.0.tar.gz", hash = "sha256:65ea33f824204b13a5fb58676322fce4ce3d99e409757388b5fe330e324ca79b", size = 19550, upload-time = "2021-10-22T09:29:12.709Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/22/2cf7c2c6c9276668fdc2c943cc82f713de580f57f1ef52282f50b447b53f/jupyterlab_h5web-12.8.0.tar.gz", hash = "sha256:e7d69a06634ce387521251176b977dd158e601ab11ca9eb990ad0b7b5b87ab8f", size = 514479, upload-time = "2026-04-24T07:34:44.198Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ff/f2/04a095e9085f1a26caee3c539c52c81ae915a19e425c98a994f805fdc03f/jupyterlab_hdf-1.1.0-py2.py3-none-any.whl", hash = "sha256:54f125d6248147fa9059daf274f3bc44512ceb16c689e6ff167dff14e5705b17", size = 15733, upload-time = "2021-10-22T09:29:10.799Z" },
+    { url = "https://files.pythonhosted.org/packages/d9/bc/e6050a87eec348711d09dff7f2020b48386fbcef9fd75389a47b69264795/jupyterlab_h5web-12.8.0-py3-none-any.whl", hash = "sha256:eaa0c63c8083d378e35fd1d56871bff893efb1be00608548a2daf7f1906c323b", size = 425266, upload-time = "2026-04-24T07:34:42.6Z" },
 ]
 
 [[package]]
@@ -3427,22 +3413,6 @@ wheels = [
 ]
 
 [[package]]
-name = "notebook"
-version = "7.5.5"
-source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
-dependencies = [
-    { name = "jupyter-server" },
-    { name = "jupyterlab" },
-    { name = "jupyterlab-server" },
-    { name = "notebook-shim" },
-    { name = "tornado" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/1f/6d/41052c48d6f6349ca0a7c4d1f6a78464de135e6d18f5829ba2510e62184c/notebook-7.5.5.tar.gz", hash = "sha256:dc0bfab0f2372c8278c457423d3256c34154ac2cc76bf20e9925260c461013c3", size = 14169167, upload-time = "2026-03-11T16:32:51.922Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/f8/aa/cbd1deb9f07446241e88f8d5fecccd95b249bca0b4e5482214a4d1714c49/notebook-7.5.5-py3-none-any.whl", hash = "sha256:a7c14dbeefa6592e87f72290ca982e0c10f5bbf3786be2a600fda9da2764a2b8", size = 14578929, upload-time = "2026-03-11T16:32:48.021Z" },
-]
-
-[[package]]
 name = "notebook-shim"
 version = "0.2.4"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
@@ -3873,7 +3843,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
-    { name = "ptyprocess" },
+    { name = "ptyprocess", marker = "sys_platform != 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [
