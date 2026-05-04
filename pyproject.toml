@@ -44,7 +44,7 @@ jupyter = [
 'electrokitty',
 #'baybe',
 'ipython<9',
-'ipykernel<7',
+'ipykernel<8',
 'pyvis',
 'lmfit',
 'jupyterlab_h5web',
