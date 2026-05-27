@@ -3126,7 +3126,7 @@ wheels = [
 [[package]]
 name = "nomad-baseclasses"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#ecebb1020f17cdb50ec88ec89ca70f01c45ff850" }
+source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#6ec612a2a49113681cb37e4d28d3961709ea0dda" }
 dependencies = [
     { name = "chardet" },
     { name = "hdf5plugin" },
@@ -3145,7 +3145,7 @@ dependencies = [
 [[package]]
 name = "nomad-chemical-energy"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#fad4b5866ada84a48a78da65675536d3682a1be5" }
+source = { git = "https://github.com/nomad-hzb/nomad-chemical-energy.git#e9fcca62e15bbc2333e46e63dd7f36f3d63100e6" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
@@ -3228,7 +3228,7 @@ provides-extras = ["plugins", "jupyter", "dev"]
 [[package]]
 name = "nomad-hysprint"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#69c4d1e53e9502ec8973c0ec729abb0d42fe14f4" }
+source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#d0838644355ee29b0a5e307e27359f8034af270d" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
