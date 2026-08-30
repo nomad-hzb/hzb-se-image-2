@@ -48,7 +48,7 @@ jupyter = [
 'pyvis',
 'lmfit',
 'jupyterlab_h5web',
-'jupyterlab>4.0',
+'jupyterlab>=4.5.7',
 'seaborn', 
 'jupyterlab-spreadsheet-editor' # 'jupyterhub<5','oauthenticator<16'
 ]
