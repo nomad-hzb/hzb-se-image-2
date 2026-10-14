@@ -3215,7 +3215,7 @@ wheels = [
 [[package]]
 name = "nomad-baseclasses"
 version = "1.0.1"
-source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#9f72feda91b3311ede3d037f8d454f072269c2a7" }
+source = { git = "https://github.com/nomad-hzb/nomad-baseclasses.git#aae8c8ff68f48015dd25c21a4757fa939e04b0ab" }
 dependencies = [
     { name = "chardet" },
     { name = "hdf5plugin" },
@@ -3335,7 +3335,7 @@ wheels = [
 [[package]]
 name = "nomad-hysprint"
 version = "1.0.0"
-source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#bbebb72b36b34d4ccc9b8bd91b09cd2341a0251b" }
+source = { git = "https://github.com/nomad-hzb/nomad-hysprint.git#e64010fcfc894e5cb0d4eee898374475fca5df47" }
 dependencies = [
     { name = "httpx" },
     { name = "nomad-baseclasses" },
