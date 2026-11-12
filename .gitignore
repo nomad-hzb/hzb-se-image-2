@@ -164,3 +164,7 @@ cython_debug/
 
 # TLS certificates
 tls/
+certs/
+
+# Pycharm
+.idea/
