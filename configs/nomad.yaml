@@ -1,9 +1,9 @@
 services:
-  api_host: "NOMAD_SERVICES_API_HOST"
+  # api_host: "NOMAD_SERVICES_API_HOST"
   api_port: 80
   api_base_path: "/backend"
   upload_limit: 1000
-  admin_user_id: "NOMAD_SERVICES_ADMIN_USER_ID"
+  # admin_user_id: "NOMAD_SERVICES_ADMIN_USER_ID"
   upload_members_group_search_enabled: true
   https: true
 

@@ -36,7 +36,7 @@ plugins = [
   'hzb-combinatorial-libraries @ git+https://github.com/nomad-hzb/hzb-combinatorial-libraries-plugin.git',
   'nomad-chemical-energy @ git+https://github.com/nomad-hzb/nomad-chemical-energy.git',
   'nomad-north-jupyter>=0.2.6',
-  'nomad-north-voila',
+  'nomad-north-voila>=0.1.15',
   'nomad-gui==2.0.1',
 ]
 jupyter = [
