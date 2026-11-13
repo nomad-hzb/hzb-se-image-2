@@ -5065,7 +5065,7 @@ requires-dist = [
     { name = "nomad-lab", extras = ["infrastructure"], specifier = "==2.0.1" },
     { name = "nomad-material-processing", marker = "extra == 'plugins'", git = "https://github.com/FAIRmat-NFDI/nomad-material-processing.git?rev=103-add-specialized-combinatorialsample-schema" },
     { name = "nomad-north-jupyter", marker = "extra == 'plugins'", specifier = ">=0.2.6" },
-    { name = "nomad-north-voila", marker = "extra == 'plugins'" },
+    { name = "nomad-north-voila", marker = "extra == 'plugins'", specifier = ">=0.1.15" },
     { name = "pyvis", marker = "extra == 'jupyter'" },
     { name = "seaborn", marker = "extra == 'jupyter'" },
     { name = "voila", marker = "extra == 'jupyter'" },
@@ -6062,7 +6062,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://gitlab.mpcdf.mpg.de/api/v4/projects/2187/packages/pypi/simple" }
 dependencies = [
-    { name = "ptyprocess" },
+    { name = "ptyprocess", marker = "sys_platform != 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [
