@@ -95,6 +95,7 @@ jobs:
       - name: Run plugin tests
         env:
           PLUGIN_TESTS_CI_NODE_INDEX: ${{ matrix.group }}
+          NOMAD_CONFIG: ${{ github.workspace }}/tests/nomad.yaml
         run: |
           # Convert line-separated plugin names to the CLI's comma-separated format.
           PLUGINS_STRING=$(echo "$PLUGIN_TESTS_PLUGINS_TO_SKIP" | tr '\n' ',' | sed 's/,$//')
