@@ -1,41 +1,451 @@
 services:
-  api_host: "localhost"
-  api_base_path: "/nomad-oasis"
+  # api_host: "NOMAD_SERVICES_API_HOST"
+  api_port: 80
+  api_base_path: "/backend"
+  upload_limit: 1000
+  # admin_user_id: "NOMAD_SERVICES_ADMIN_USER_ID"
+  upload_members_group_search_enabled: true
+  https: true
 
 oasis:
   is_oasis: true
   uses_central_user_management: true
 
+ui:
+  theme:
+    title: "NOMAD SE HZB"
+  unit_systems:
+    selected: "SI"
+  apps:
+    # Configures which apps to show. Note that the app for 'entries' (which
+    # corresponds to searching all entries) has to be included at the moment.
+    include:
+      - 'eln'
+      - 'solarcells'
+      - 'entries'
+      - 'nkdata'
+    # Configures a new app for samples
+    options:
+      nkdata:
+        # Label of the App
+        label: 'NK Data'
+        # Path used in the URL, must be unique
+        path: 'nkdata'
+        # Used to categorize apps in the explore menu
+        category: 'Experiment'
+        # Brief description used in the app menu
+        description: 'An app customized for NK Data.'
+        # Longer description that can also use markdown
+        # Controls which columns are shown in the results table
+        columns:
+          selected:
+            - 'entry_name'
+            - 'data.chemical_composition_or_formulas#baseclasses.data_transformations.nkdata_analysis.NKData'
+            - 'entry_create_time'
+            - 'entry_type'
+            - 'authors'
+            - 'upload_name'
+          options:
+            entry_name:
+              label: 'Name'
+              align: 'left'
+            results.material.elements:
+              label: 'Elements'
+              align: 'left'
+            data.chemical_composition_or_formulas#baseclasses.data_transformations.nkdata_analysis.NKData:
+              label: 'Elements and Formulas'
+              align: 'left'
+            results.material.chemical_formula_hill:
+              label: 'Formula'
+              align: 'left'
+            entry_type:
+              label: 'Entry type'
+              align: 'left'
+            upload_name:
+              label: 'Upload name'
+              align: 'left'
+            upload_id:
+              label: 'Upload id'
+              align: 'left'
+            upload_create_time:
+              label: 'Upload time'
+              align: 'left'
+            entry_create_time:
+              label: 'Entry time'
+              align: 'left'
+            authors:
+              label: 'Authors'
+              align: 'left'
+        # Dictionary of search filters that are always enabled for queries made within
+        # this app. This is especially important to narrow down the results to the
+        # wanted subset. Any available search filter can be targeted here.
+        filters:
+          include:
+            - '*baseclasses.data_transformations.nkdata_analysis.NKData'
+        filters_locked:
+          section_defs.definition_qualified_name: 'baseclasses.data_transformations.nkdata_analysis.NKData'
+
+        # Controls the filter menus shown on the left
+        filter_menus:
+          options:
+            material:
+              label: 'Material'
+              level: 0
+            elements:
+              label: 'Elements / Formula'
+              level: 1
+              size: 'xl'
+            eln:
+              label: 'Electronic Lab Notebook'
+              level: 0
+            custom_quantities:
+              label: 'User Defined Quantities'
+              level: 0
+              size: 'l'
+            author:
+              label: 'Author / Origin / Dataset'
+              level: 0
+              size: 'm'
+            metadata:
+              label: 'Visibility / IDs / Schema'
+              level: 0
+        dashboard:
+          widgets:
+            - type: 'periodictable'
+              scale: 'linear'
+              quantity: 'results.material.elements'
+              layout:
+                xxl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 12
+                  y: 0
+                  x: 6
+                xl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 12
+                  y: 0
+                  x: 0
+                lg:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 12
+                  y: 0
+                  x: 6
+                md:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 12
+                  y: 0
+                  x: 6
+                sm:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 12
+                  y: 0
+                  x: 6
+      eln:
+        label: 'HZB ELN'
+        path: 'eln'
+        resource: 'entries'
+        breadcrumb: 'ELN'
+        category: 'Experiment'
+        description: 'Search your experimental data'
+        help:
+          title: 'Experiments search'
+          content: 'This page allows you to search **experiments** within the HZB-NOMAD.'
+        # Configures search result columns
+        columns:
+          selected:
+            - 'entry_name'
+            # - 'results.material.chemical_formula_hill'
+            - 'results.eln.methods'
+            - 'entry_create_time'
+            - 'entry_type'
+            # - 'upload_create_time'
+            - 'authors'
+            - 'upload_name'
+          options:
+            entry_name:
+              label: 'Name'
+              align: 'left'
+            results.eln.methods:
+              label: 'Methods'
+              align: 'left'
+            results.material.chemical_formula_hill:
+              label: 'Formula'
+              align: 'left'
+            entry_type:
+              label: 'Entry type'
+              align: 'left'
+            upload_name:
+              label: 'Upload name'
+              align: 'left'
+            upload_id:
+              label: 'Upload id'
+              align: 'left'
+            upload_create_time:
+              label: 'Upload time'
+              align: 'left'
+            entry_create_time:
+              label: 'Entry time'
+              align: 'left'
+            authors:
+              label: 'Authors'
+              align: 'left'
+        # Configures search result rows
+        rows:
+          actions:
+            enabled: true
+          details:
+            enabled: true
+          selection:
+            enabled: true
+        # Which menus to show
+        filter_menus:
+          options:
+            material:
+              label: 'Material'
+              level: 0
+            elements:
+              label: 'Elements / Formula'
+              level: 1
+              size: 'xl'
+            eln:
+              label: 'Electronic Lab Notebook'
+              level: 0
+            custom_quantities:
+              label: 'User Defined Quantities'
+              level: 0
+              size: 'l'
+            author:
+              label: 'Author / Origin / Dataset'
+              level: 0
+              size: 'm'
+            metadata:
+              label: 'Visibility / IDs / Schema'
+              level: 0
+            optimade:
+              label: 'Optimade'
+              level: 0
+              size: 'm'
+        # Configures a default, non-mutable filters that are applied to the
+        # data to pre-filter results from all entries
+        filters:
+          include:
+            - '*nomad_hysprint.schema_packages.hysprint_package.HySprint_JVmeasurement'
+            - '*nomad_hysprint.schema_packages.hysprint_package.HySprint_Process'
+        filters_locked:
+          quantities: 'data'
+        dashboard:
+          widgets:
+            - type: 'terms'
+              showinput: true
+              scale: 'linear'
+              quantity: 'authors.name'
+              layout:
+                xxl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 0
+                xl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 0
+                lg:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 0
+                md:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 0
+                sm:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 0
+            - type: 'terms'
+              showinput: true
+              scale: 'linear'
+              # label: 'Measurement | Processes'
+              quantity: 'results.eln.methods'
+              layout:
+                xxl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 6
+                xl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 0
+                lg:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 6
+                md:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 6
+                sm:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 6
+            - type: 'terms'
+              showinput: true
+              scale: 'linear'
+              # label: 'Sample and Batch IDs'
+              quantity: 'results.eln.lab_ids'
+              layout:
+                xxl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                xl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                lg:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                md:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                sm:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+            - type: 'terms'
+              showinput: true
+              scale: 'linear'
+              # label: 'Sample and Batch IDs'
+              quantity: 'results.eln.sections'
+              layout:
+                xxl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                xl:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                lg:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                md:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+                sm:
+                  minH: 3
+                  minW: 3
+                  h: 6
+                  w: 6
+                  y: 0
+                  x: 12
+
 plugins:
-#   # We only include our schema here. Without the explicit include, all plugins will be
-#   # loaded. Many build in plugins require more dependencies. Install nomad-lab[parsing]
-#   # to make all default plugins work.
   entry_points:
+    options:
+      nomad_north_jupyter.north_tools:jupyter:
+        north_tool:
+          image: ghcr.io/nomad-hzb/hzb-se-image-2/jupyter:main
+      nomad_north_voila.north_tools:voila:
+        north_tool:
+          image: ghcr.io/nomad-hzb/hzb-se-image-2/jupyter:main
     exclude: [
       "nomad_chemical_energy.apps:necc_find_app",
       "nomad_chemical_energy.apps:necc_compare_app",
       "nomad_chemical_energy.apps:nome_oer_cp_app",
     ]
     include: [
-    "hzb_combinatorial_libraries.schema_packages:hzb_library_package",
-    #"hzb_combinatorial_libraries.parsers:hzb_library_parser", only enable after fixing conflict with trpl
-    "nomad_hysprint.schema_packages:hysprint_package",
-    "nomad_hysprint.parsers:hysprint_parser",
-    "nomad_hysprint.parsers:hysprint_experiment_parser",
-    "nomad_chemical_energy.schema_packages:ce_wannsee_package",
-    "nomad_chemical_energy.schema_packages:hzb_characterization_package",
-    "nomad_hysprint.apps:hysprint_voila_app",
-    "nomad_hysprint.apps:absolute_pl_app",
-    "nomad_hysprint.apps:solar_cell_overview_entry_point",
-    "nomad_gui.apis:gui_api"
-    #"nomad_chemical_energy.parsers:ce_wannsee_cor_parser",
-    #"nomad_chemical_energy.parsers:ce_wannsee_xrd_xy_parser",
+      "hzb_combinatorial_libraries.schema_packages:hzb_library_package",
+      #"hzb_combinatorial_libraries.parsers:hzb_library_parser", only enable after fixing conflict with trpl
+      "nomad_hysprint.schema_packages:hysprint_package",
+      "nomad_hysprint.parsers:hysprint_parser",
+      "nomad_hysprint.parsers:hysprint_experiment_parser",
+      "nomad_chemical_energy.schema_packages:ce_wannsee_package",
+      "nomad_chemical_energy.schema_packages:hzb_characterization_package",
+      "nomad_hysprint.apps:hysprint_voila_app",
+      "nomad_hysprint.apps:absolute_pl_app",
+      "nomad_hysprint.apps:solar_cell_overview_entry_point",
+      #"nomad_chemical_energy.parsers:ce_wannsee_cor_parser",
+      #"nomad_chemical_energy.parsers:ce_wannsee_xrd_xy_parser",
+      #"nomad_pvcomb.schema_packages:pvcomb_schema_package",
+      #"nomad_pvcomb.schema_packages:pvcomb_sample_package",
+      #"nomad_pvcomb.schema_packages:pvcomb_experimental_plan_package",
+      "nomad_north_jupyter.north_tools:jupyter",
+      "nomad_north_voila.north_tools:voila",
     ]
 
 
 meta:
   deployment: "oasis"
-  deployment_url: "https://my-oasis.org/api"
   maintainer_email: "me@my-oasis.org"
 
 logstash:
@@ -50,3 +460,7 @@ mongo:
 elastic:
   entries_index: nomad_oasis_entries_v1
   materials_index: nomad_oasis_materials_v1
+
+north:
+  enabled: true
+  enable_new_hub_api: true
