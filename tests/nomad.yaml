@@ -7,3 +7,11 @@ client:
   password: "password"
 services:
   upload_limit: 1000
+
+plugins:
+  entry_points:
+    exclude: [
+      "nomad_chemical_energy.apps:necc_find_app",
+      "nomad_chemical_energy.apps:necc_compare_app",
+      "nomad_chemical_energy.apps:nome_oer_cp_app",
+    ]
