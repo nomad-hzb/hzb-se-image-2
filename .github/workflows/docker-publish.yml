@@ -23,7 +23,7 @@ env:
   NOMAD_DOCS_REPO_REF: ""
   # If you want to skip the tests for some plugins, add them here as a single string where
   # each plugin is separated by a comma or a line break
-  PLUGIN_TESTS_PLUGINS_TO_SKIP: "nomad-schema-plugin-simulation-workflow, nomad-luqy-plugin"
+  PLUGIN_TESTS_PLUGINS_TO_SKIP: ""
 
 permissions:
   contents: write
@@ -95,7 +95,6 @@ jobs:
       - name: Run plugin tests
         env:
           PLUGIN_TESTS_CI_NODE_INDEX: ${{ matrix.group }}
-          NOMAD_CONFIG: ${{ github.workspace }}/tests/nomad.yaml
         run: |
           # Convert line-separated plugin names to the CLI's comma-separated format.
           PLUGINS_STRING=$(echo "$PLUGIN_TESTS_PLUGINS_TO_SKIP" | tr '\n' ',' | sed 's/,$//')
